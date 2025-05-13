@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Screyder Logo">
+        </a>
+        <nav>
+            <div class="menu-toggle"><i class="fa-solid fa-bars" style="color: #ffffff;"></i></div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="sobre-mi.html">Sobre mí</a></li>
+                <li class="nav-item"><a href="proyectos.html">Proyectos</a></li>
+                <li class="nav-item"><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="sobre-mi-background">
+            <section class="sobre-mi">
+                <img src="images/avatar.png" alt="Avatar" class="avatar">
+                <div class="content">
+                    <h1>Sobre Mí</h1>
+                    <div class="text-body">
+                        <p>Como Diseñador Interactivo especializado en videojuegos, combino una formación técnica en Gestión de Proyectos con estudios profesionales en Diseño Interactivo. Cuento con experiencia en herramientas de la Suite Creativa de Adobe, Unity, y programación en C# para Unity, así como en Realidad Virtual, Aumentada y Mixta. Mi experiencia abarca el Diseño de Interfaces, Animación 2D y 3D, Modelado 3D, y Desarrollo de Videojuegos y Aplicaciones. Mi objetivo es aplicar mis habilidades y conocimientos para impulsar el desarrollo de videojuegos innovadores y desafiantes que marquen la diferencia en la industria.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="text-overlay">
+            <h2>Si desea conocer más acerca de mi trabajo, eres bienvenido a dar un vistazo a mis proyectos.</h2>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-text-centered">
+            <p>© 2025 Todos los derechos reservados.</p>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/leonardo-vargas-rojas/" target="_blank"><img src="images/icons/icon-linkedin.png" alt="LinkedIn"></a>
+            <a href="https://screyder.itch.io" target="_blank"><img src="images/icons/icon-itchio.png" alt="Itch.io"></a>
+            <a href="https://www.behance.net/leonardovargas07" target="_blank"><img src="images/icons/icon-behance.png" alt="Behance"></a>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

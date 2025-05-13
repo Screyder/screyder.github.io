@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Screyder Logo">
+        </a>
+        <nav>
+            <div class="menu-toggle"><i class="fa-solid fa-bars" style="color: #ffffff;"></i></div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="sobre-mi.html">Sobre mí</a></li>
+                <li class="nav-item"><a href="proyectos.html">Proyectos</a></li>
+                <li class="nav-item"><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contacto-background">
+            <div class="contacto">
+                <h1>Contacto</h1>
+                <div class="left-column">
+                    <div class="avatar">
+                        <img src="images/avatar.png" alt="Avatar">
+                    </div>
+                    <div class="content">
+                        <div class="text-body">
+                            <p>Si deseas ponerte en contacto conmigo, te invito a completar el siguiente formulario. Me pondré en contacto tan pronto como me sea posible.</p>
+                        </div>
+                    </div>
+                </div>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" id="nombres" name="nombres">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellidos">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="celular">Celular:</label>
+                        <input type="text" id="celular" name="celular">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo:</label>
+                        <input type="email" id="correo" name="correo">
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje"></textarea>
+                        <div class="error-message"></div>
+                    </div>
+                    <button type="submit" class="btn-submit"></button>
+                    <div class="success-message"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-text-centered">
+            <p>©2025 Todos los derechos reservados.</p>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/leonardo-vargas-rojas/" target="_blank"><img src="images/icons/icon-linkedin.png" alt="LinkedIn"></a>
+            <a href="https://screyder.itch.io" target="_blank"><img src="images/icons/icon-itchio.png" alt="Itch.io"></a>
+            <a href="https://www.behance.net/leonardovargas07" target="_blank"><img src="images/icons/icon-behance.png" alt="Behance"></a>
+        </div>
+    </footer>
+
+    <script>
+	const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contact-form');
+            const nombresInput = document.getElementById('nombres');
+            const apellidosInput = document.getElementById('apellidos');
+            const celularInput = document.getElementById('celular');
+            const correoInput = document.getElementById('correo');
+            const mensajeInput = document.getElementById('mensaje');
+            const nombresError = document.getElementById('nombres-error');
+            const apellidosError = document.getElementById('apellidos-error');
+            const celularError = document.getElementById('celular-error');
+            const correoError = document.getElementById('correo-error');
+            const mensajeError = document.getElementById('mensaje-error');
+            const successMessage = document.getElementById('success-message');
+
+            nombresInput.addEventListener('blur', validateNombres);
+            apellidosInput.addEventListener('blur', validateApellidos);
+            celularInput.addEventListener('blur', validateCelular);
+            correoInput.addEventListener('blur', validateCorreo);
+            mensajeInput.addEventListener('blur', validateMensaje);
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const isNombresValid = validateNombres();
+                const isApellidosValid = validateApellidos();
+                const isCelularValid = validateCelular();
+                const isCorreoValid = validateCorreo();
+                const isMensajeValid = validateMensaje();
+
+                if (isNombresValid && isApellidosValid && isCelularValid && isCorreoValid && isMensajeValid) {
+                    successMessage.textContent = '¡Mensaje enviado con éxito! Te contactaré pronto.';
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    successMessage.style.display = 'none';
+                }
+            });
+
+            function validateNombres() {
+                const value = nombresInput.value.trim();
+                if (value.length < 2) {
+                    nombresError.textContent = 'El nombre debe tener al menos 2 caracteres.';
+                    nombresInput.classList.add('error');
+                    return false;
+                } else {
+                    nombresError.textContent = '';
+                    nombresInput.classList.remove('error');
+                    return true;
+                }
+            }
+
+            function validateApellidos() {
+                const value = apellidosInput.value.trim();
+                if (value.length < 2) {
+                    apellidosError.textContent = 'Los apellidos deben tener al menos 2 caracteres.';
+                    apellidosInput.classList.add('error');
+                    return false;
+                } else {
+                    apellidosError.textContent = '';
+                    apellidosInput.classList.remove('error');
+                    return true;
+                }
+            }
+
+            function validateCelular() {
+                const value = celularInput.value.trim();
+                const celularPattern = /^[0-9]{8,10}$/;
+                if (!celularPattern.test(value)) {
+                    celularError.textContent = 'El celular debe tener entre 8 y 10 dígitos.';
+                    celularInput.classList.add('error');
+                    return false;
+                } else {
+                    celularError.textContent = '';
+                    celularInput.classList.remove('error');
+                    return true;
+                }
+            }
+
+            function validateCorreo() {
+                const value = correoInput.value.trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(value)) {
+                    correoError.textContent = 'Por favor, ingresa un correo electrónico válido.';
+                    correoInput.classList.add('error');
+                    return false;
+                } else {
+                    correoError.textContent = '';
+                    correoInput.classList.remove('error');
+                    return true;
+                }
+            }
+
+            function validateMensaje() {
+                const value = mensajeInput.value.trim();
+                if (value.length < 10) {
+                    mensajeError.textContent = 'El mensaje debe tener al menos 10 caracteres.';
+                    mensajeInput.classList.add('error');
+                    return false;
+                } else {
+                    mensajeError.textContent = '';
+                    mensajeInput.classList.remove('error');
+                    return true;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
